@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileSdk
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    // Tests
+    implementation rootProject.junit
+    implementation rootProject.testRunner
+    testImplementation rootProject.okhhtp3MockServer
+
+    // Json
+    implementation rootProject.gson
+
+    // Network
+    implementation rootProject.okhttp
+    implementation rootProject.okhttpLogging
+
+    //Database
+    implementation rootProject.room
+    kapt rootProject.roomAnnotationProcessor
+    implementation rootProject.roomRxJava
+
+    //Retrofit
+    implementation rootProject.retrrofit
+    implementation rootProject.retrofitRxAdapter
+    implementation rootProject.retrofitGsonConverter
+
+    // Modules
+    api project(path: ':domain')
+}

@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.compileSdk
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    // Kotlin
+    api rootProject.kotlinStdlibV7
+
+    // Network
+    api rootProject.rxjava
+
+    // Tests
+    implementation rootProject.junit
+}

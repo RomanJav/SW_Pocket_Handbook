@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "by.tomal.sw.pockethandbook"
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            buildConfigField("String", "API_ENDPOINT", "\"https://api.backendless.com/6F5DF07E-FDF1-2BD3-FF19-4EEA42398B00/39FC19A7-6FB0-409E-FFC9-89CD05F24F00/data/monsters\"")
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation rootProject.appcompatV7
+    implementation rootProject.junit
+    implementation rootProject.testRunner
+    implementation rootProject.espresseo
+    implementation rootProject.constraintLayout
+    implementation rootProject.appcompatV7
+    implementation rootProject.supportV4
+    implementation rootProject.supportDesign
+    implementation rootProject.supportFragment
+    implementation rootProject.recyclerView
+    implementation rootProject.lifecycle
+    implementation rootProject.picassoSquare
+    implementation rootProject.picasso
+    implementation rootProject.picassoTransormer
+    annotationProcessor rootProject.lifecycleCompiler
+    implementation rootProject.rxandroid
+
+    api project(path: ':data')
+}
